@@ -14,7 +14,7 @@ int main(){
 
     int days= a;
 
-    printf("%d ano(s)\n%d mes(es)\n%d dia(s)", year, month, days);
+    printf("%d ano(s)\n%d mes(es)\n%d dia(s)\n", year, month, days);
 
     return 0;
 
