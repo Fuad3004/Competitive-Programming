@@ -2,17 +2,24 @@
 
 int main(){
 
-    int n,m;
-    scanf("%d %d", &n, &m);
+    while(1){
 
-    for(int i=0; i<n; i++){
+        int n,m;
+        scanf("%d %d", &n, &m);
 
-        for(int j=0; j<m; j++){
-            printf("#");
+        if(n==0 && m==0) break;
+
+        for(int i=0; i<n; i++){
+
+            for(int j=0; j<m; j++){
+                printf("#");
+            }
+            printf("\n");
         }
         printf("\n");
-    }
 
+
+    }
 
 
 
