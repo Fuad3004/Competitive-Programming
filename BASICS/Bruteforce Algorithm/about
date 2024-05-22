@@ -1,1 +1,6 @@
+A brute force algorithm is a simple, straightforward, and consistent method for solving problems by trying every possible solution until the best one is found. It's a trial-and-error process that involves:
+Defining the problem
+Enumerating all possible solutions
+Testing each candidate
+Selecting the correct solution 
 
