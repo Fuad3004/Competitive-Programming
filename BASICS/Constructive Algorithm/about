@@ -1,0 +1,55 @@
+Definition
+What is a constructive algorithm, exactly? I think it’s most helpful to give a problem to motivate:
+
+Let 1≤N≤105
+ and 1≤K≤log2(N)
+ be fixed. Imagine performing a binary search on the values 1...N
+. Give a value X, 1≤X≤N
+, which would be found after exactly K steps of the binary search.
+
+There's a bunch of variations on binary search, so assume I chose a particular one for this example.
+
+We’re supposed to generate an example number which satisfies the above condition (found in exactly K steps of a binary search). In almost all constructive algorithm problems, there are many different approaches that all work, and usually any output which satisfies the conditions is accepted. The reason these problems get difficult is that working out small examples on pen and paper is trivial, yet it's hard to imagine a programmatic approach that will always construct a valid solution for arbitrary N,K
+.
+
+These problems are remarkable in that solutions rarely use some template algorithm/technique like dynamic programming or segment trees. For topics like dynamic programming, once you solve 3-5 problems, you're able to solve like >50% of them without breaking a sweat. However, constructive problems are all sort of ad-hoc, so they're difficult to solve even if you've practiced a lot of constructive algorithms before. Realistically, the best predictor of your ability to solve constructive problems is going to be having a strong mathematical intuition, which is sort of innate and very hard to train.
+
+The "usual" strategy for these problems is to manually solve a few inputs, then building insight from that to build a deterministic algorithm that provably works for all inputs. If you you don’t come from a mathematical background, I can offer some hacky strategies on how to get AC here without requiring much creativity on your part...
+
+Strategy
+The strategy is to write a script with two procedures: one which generates all possible answers, and another which given an answer X, returns true if it satisfies the problem constraints (in this case, it tests if X would be found after exactly K steps). Obviously, when you combine the two, you have a really slow brute-force solution to the problem that will obviously time-out if you were to submit it.
+
+This is very valuable -- instead of having to solve examples yourself, you can just use this script to see what correct answers look like for different parameter values. So time to put on your detective hat, and try to find a pattern in the outputs you see!
+
+Let's say we're testing N=16,K=1,2,3,4
+ in the problem above:
+
+N=16,K=1
+: only X=8 works.
+
+N=16,K=2
+: both X=4 and X=12 work.
+
+N=16,K=3
+: X=2, X=6, X=10, X=14 work.
+
+N=16,K=4
+: X=1, X=3, ...
+
+Focus on the very first input we get for each K
+: it's 8, 4, 2, 1! It seems like there’s a pattern that we can use: we start with N and divide by 2 (rounding down) K times. It's instructive to try out other choices for N
+, like 17,24,1
+, etc.
+
+Now that we have a pattern, we ought to prove it holds for all N,K
+… Or maybe we don't have to! We can use the script yet again! We run the brute-force and "hypothesis" approach on as many choices of N,K
+ as we can, and see if the smart solution ever gets it wrong. We probably won't be able to test all parameter values, but we'll cover enough of the input possibilities that all the tricky cases have been tested. Once we have the script, we can much more rapidly come up with and test solutions, even if the first one turned out wrong!
+
+If a problem of this type has a well-hidden pattern, this strategy shines: you can test patterns as fast as you can code them up. If you didn't have this script ready, you would have to execute the algorithm on paper, which is both slower and more error-prone.
+
+It's important to acknowledge the drawback here: writing the script takes 10-15 minutes, and yet there is no guarantee that you'll come up with the solution. So use your best judgement -- it might be better to switch to another problem.
+
+Hope this helped y'all!
+
+
+  credit: https://codeforces.com/blog/entry/80317
